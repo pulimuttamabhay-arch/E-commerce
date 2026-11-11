@@ -51,7 +51,7 @@ export const addcategory = async (req, res) => {
       });
     }
 
-    const category = await Category.create({
+    const category = await categorymodel.create({
       name: cname.trim(),
       cdesc,
       status,

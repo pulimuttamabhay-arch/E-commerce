@@ -65,15 +65,14 @@ io.on('connection', (socket) => {
 })
 
 const startServer = async () => {
-    try {
-        await dbconnection()
+    await dbconnection()
 
-        server.listen(PORT_NUMBER, () => {
-            console.log(`Server is running on port number : ${PORT_NUMBER}`)
-        })
-    } catch (error) {
-        console.log('Database connection failed:', error)
-    }
+    server.listen(PORT_NUMBER, () => {
+        console.log(`Server is running on port number : ${PORT_NUMBER}`)
+    })
 }
 
-startServer()
+startServer().catch((error) => {
+    console.error('Application startup failed:', error)
+    process.exitCode = 1
+})

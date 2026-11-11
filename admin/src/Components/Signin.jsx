@@ -31,7 +31,8 @@ export default function Signin() {
   }
 
   // Handle admin login
-  const handlelogin = () => {
+  const handlelogin = (event) => {
+    event.preventDefault()
 
     if (!signin.email || !signin.password) {
       alert('Please enter email and password')
@@ -143,7 +144,7 @@ export default function Signin() {
                 Sign in to manage your NovaCart store.
               </p>
 
-              <div className="needs-validation" noValidate>
+              <form className="needs-validation" noValidate onSubmit={handlelogin}>
 
                 {/* Email */}
                 <div className="mb-3">
@@ -223,15 +224,14 @@ export default function Signin() {
 
                 {/* Login Button */}
                 <button
-                  type="button"
+                  type="submit"
                   className="btn btn-primary btn-lg w-100"
-                  onClick={handlelogin}
                 >
                   <i className="ti ti-login me-1" />
                   Login to Admin
                 </button>
 
-              </div>
+              </form>
 
               {/* Login Note */}
               <div className="login-note mt-4">
