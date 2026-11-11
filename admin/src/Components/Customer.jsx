@@ -22,7 +22,7 @@ export default function Customer() {
   const [statusfilter,setStatusfilter] = useState('All Status')
 
   const fetcheduser = async (req,res)=>{
-    axios.get('http://localhost:7002/User/viewusers')
+    axios.get(`${host}/User/viewusers`)
     .then((res)=>{
       console.log(res)
       setViewuser(res.data.allusers)
@@ -42,7 +42,7 @@ export default function Customer() {
 
   const fetchcount = async () => {
     try {
-      const res = await axios.get('http://localhost:7002/User/Count')
+      const res = await axios.get(`${host}/User/Count`)
 
       console.log('Count response:', res.data)
 
@@ -76,7 +76,7 @@ export default function Customer() {
   const handleblock = async (uid) => {
     try {
       const res = await axios.put(
-        `http://localhost:7002/User/updatestatus/${uid}`,
+        `${host}/User/updatestatus/${uid}`,
         { status: 'Blocked' }
       )
 
@@ -228,7 +228,7 @@ export default function Customer() {
                                   src={
                                     udata.profileimage.startsWith('http')
                                       ? udata.profileimage
-                                      : `http://localhost:7002/image/${encodeURIComponent(udata.profileimage)}`
+                                      : `${host}/image/${encodeURIComponent(udata.profileimage)}`
                                   }
                                   className="w-100 h-100 rounded-circle"
                                   style={{objectFit:'cover'}}

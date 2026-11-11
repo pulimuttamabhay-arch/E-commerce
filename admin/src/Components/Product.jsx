@@ -97,7 +97,7 @@ export default function Product() {
 
     console.log('product details',product)
 
-    axios.post(`http://localhost:7002/product/addproduct`,formdata)
+    axios.post(`${host}/product/addproduct`,formdata)
 
     .then((res)=>{
       console.log(res)
@@ -124,7 +124,7 @@ export default function Product() {
   }
 
   const fetchcategory=()=>{
-    axios.get(`http://localhost:7002/category/viewcategory`)
+    axios.get(`${host}/category/viewcategory`)
     .then((res)=>{
       console.log('fetched response:',res)
 

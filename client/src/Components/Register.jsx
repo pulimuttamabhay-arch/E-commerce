@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 
 import React from 'react'
 import { useState } from 'react'
@@ -34,7 +35,7 @@ const handelsubmit = async (e)=>{
   try {
     console.log('register user',register)
 
-    const res = await axios.post('http://localhost:7002/User/adduser',register)
+    const res = await axios.post(`${host}/User/adduser`,register)
 
     console.log("response",res.data)
 
@@ -49,7 +50,7 @@ const handelsubmit = async (e)=>{
 
       try {
         const imageRes = await axios.put(
-          `http://localhost:7002/User/uploadprofileimage/${res.data.newuser._id}`,
+          `${host}/User/uploadprofileimage/${res.data.newuser._id}`,
           formData
         )
 

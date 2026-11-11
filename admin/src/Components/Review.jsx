@@ -1,3 +1,4 @@
+import { host } from '../../../client/src/Context/Host.jsx'
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -15,7 +16,7 @@ const getImageUrl = (image) => {
         return filename
     }
 
-    return `http://localhost:7002/image/${filename}`
+    return `${host}/image/${filename}`
 }
 
 export default function Review() {
@@ -28,7 +29,7 @@ export default function Review() {
     const fetchreviews = () => {
         setLoading(true)
 
-        axios.get('http://localhost:7002/review/viewallreviews')
+        axios.get(`${host}/review/viewallreviews`)
             .then((res) => {
                 console.log('Review response:', res.data)
 
@@ -55,7 +56,7 @@ export default function Review() {
     const handleVisibility = async (id, isVisible) => {
         try {
             const res = await axios.put(
-                `http://localhost:7002/review/updatereviewvisibility/${id}`,
+                `${host}/review/updatereviewvisibility/${id}`,
                 { isVisible: !isVisible }
             )
 

@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import TablePagination from './TablePagination'
 import useTablePagination from './useTablePagination'
+import { host } from '../../../client/src/Context/Host'
 
 export default function Acategory() {
   const [viewcategory,setViewcategory] = useState([])
@@ -31,7 +32,7 @@ export default function Acategory() {
   const handleedit =(id)=>{
     console.log('edit category id :',id)
     setEditid(id)
-    axios.get(`http://localhost:7002/category/getcategory/${id}`)
+    axios.get(`${host}/category/getcategory/${id}`)
     .then((res)=>{
       console.log('category Data :',res.data.singleCategory)
       const data = res.data.singleCategory
@@ -41,7 +42,7 @@ export default function Acategory() {
         status:data.status
       })
       setCategoryImage(null)
-      setImagePreview(data.image ? `http://localhost:7002/image/${data.image}` : '')
+      setImagePreview(data.image ? `${host}/image/${data.image}` : '')
     })
     .catch((error)=>{
       console.log(error)
@@ -72,7 +73,7 @@ const handlesubmit =()=>{
     console.log('updated data',updatecategory)
 
        axios.put(
-      `http://localhost:7002/category/updatecategory/${editid}`,
+      `${host}/category/updatecategory/${editid}`,
       formdata
     )
     .then((res)=>{
@@ -95,7 +96,7 @@ const handlesubmit =()=>{
     console.log("Adding category:",updatecategory)
 
     axios.post(
-      `http://localhost:7002/category/addcategory`,
+      `${host}/category/addcategory`,
       formdata
     )
     .then((res)=>{
@@ -118,7 +119,7 @@ const handlesubmit =()=>{
 }
 
 const fetchcategory = ()=>{
-  axios.get(`http://localhost:7002/category/viewcategory`)
+  axios.get(`${host}/category/viewcategory`)
   .then((res)=>{
     console.log('fetched response:',res)
     setViewcategory(res.data.allcategory)
@@ -130,7 +131,7 @@ const fetchcategory = ()=>{
 }
 
 const fetchproduct = ()=>{
-  axios.get(`http://localhost:7002/product/viewproduct`)
+  axios.get(`${host}/product/viewproduct`)
   .then((res)=>{
     console.log('fetched products:',res.data.allproduct)
     setViewproduct(res.data.allproduct)
@@ -154,7 +155,7 @@ const categoryPagination = useTablePagination(filteredcategories)
 
 const handeldelete = (id)=>{
   console.log(id)
-  axios.delete(`http://localhost:7002/category/deletecategory/${id}`)
+  axios.delete(`${host}/category/deletecategory/${id}`)
   .then((res)=>{
     console.log(res)
     console.log("category deleted by id",id)
@@ -264,7 +265,7 @@ const handeldelete = (id)=>{
                         <td>
                           {vdata.image ? (
                             <img
-                              src={`http://localhost:7002/image/${vdata.image}`}
+                              src={`${host}/image/${vdata.image}`}
                               alt={vdata.name}
                               style={{
                                 width:'55px',

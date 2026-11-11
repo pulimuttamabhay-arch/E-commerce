@@ -1,3 +1,4 @@
+import { host } from '../../../client/src/Context/Host.jsx'
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -13,7 +14,7 @@ export default function Dashboard() {
   const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(true)
 
-  const host = 'http://localhost:7002'
+  
 
   // Change these paths if your Express routes use different names
   const API = {

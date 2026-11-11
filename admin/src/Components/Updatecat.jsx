@@ -1,3 +1,4 @@
+import { host } from '../../../client/src/Context/Host.jsx'
 
 import React from 'react'
 import axios from 'axios'
@@ -29,7 +30,7 @@ export default function Updatecat() {
 
   useEffect(() => {
 
-    axios.get(`http://localhost:7002/category/getcategory/${cid}`)
+    axios.get(`${host}/category/getcategory/${cid}`)
       .then((res) => {
 
         console.log(res.data.singleCategory)
@@ -54,7 +55,7 @@ export default function Updatecat() {
     console.log('updated details:', updatecategory)
 
     axios.put(
-      `http://localhost:7002/category/updatecategory/${cid}`,
+      `${host}/category/updatecategory/${cid}`,
       updatecategory
     )
       .then((res) => {

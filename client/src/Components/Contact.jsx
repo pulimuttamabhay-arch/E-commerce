@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 
 import React, { useState } from "react";
 
@@ -35,7 +36,7 @@ export default function Contact() {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL || "http://localhost:7002"}/api/contact`,
+        `${host}/api/contact`,
         {
           method: "POST",
           headers: {

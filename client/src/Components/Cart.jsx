@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -12,7 +13,7 @@ const viewcart = async () => {
 try {
 const token = localStorage.getItem('Usertoken')
 
-const res = await axios.get('http://localhost:7002/cart/viewcart',{
+const res = await axios.get(`${host}/cart/viewcart`,{
 headers:{
 Authorization:`Bearer ${token}`
 }
@@ -47,7 +48,7 @@ removecart(id)
 return
 }
 
-await axios.put(`http://localhost:7002/cart/updatecart/${id}`,{
+await axios.put(`${host}/cart/updatecart/${id}`,{
 quantity: quantity
 },{
 headers:{
@@ -78,7 +79,7 @@ try {
 
 const token = localStorage.getItem('Usertoken') || localStorage.getItem('usertoken')
 
-await axios.delete(`http://localhost:7002/cart/removecart/${id}`,{
+await axios.delete(`${host}/cart/removecart/${id}`,{
 headers:{
 Authorization:`Bearer ${token}`
 }
@@ -175,10 +176,10 @@ return (
                             src={
                               item.product?.image
                                 ? (Array.isArray(item.product.image)
-                                  ? `http://localhost:7002/image/${item.product.image[0]}`
+                                  ? `${host}/image/${item.product.image[0]}`
                                   : item.product.image.startsWith('http')
                                     ? item.product.image
-                                    : `http://localhost:7002/image/${item.product.image}`)
+                                    : `${host}/image/${item.product.image}`)
                                 : '/assets/img/product-1.png'
                             }
                             alt={item.product?.name || 'Product'}

@@ -21,7 +21,7 @@ dotenv.config()
 
 const app = express()
 
-const PORT_NUMBER = process.env.PORT_NUMBER || 7002
+const PORT_NUMBER = process.env.PORT || process.env.PORT_NUMBER || 7002
 
 app.use(cors())
 app.use(express.json())
@@ -42,7 +42,7 @@ const server = http.createServer(app)
 
 const io = new Server(server, {
     cors: {
-        origin: ['http://localhost:5173', 'http://localhost:5174'],
+        origin: ['https://e-commerce-73ti.vercel.app', 'https://e-commerce-one-pied-73.vercel.app'],
         methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
     }
 })

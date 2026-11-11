@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 
 import React, { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
@@ -39,7 +40,7 @@ export default function DemoPayment() {
       const axios = (await import('axios')).default
 
       const res = await axios.post(
-        'http://localhost:7002/payment/demo-checkout',
+        `${host}/payment/demo-checkout`,
         {
           items: checkout.items,
           shippingAddress: checkout.shippingAddress,

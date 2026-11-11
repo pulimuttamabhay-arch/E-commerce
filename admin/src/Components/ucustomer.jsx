@@ -1,3 +1,4 @@
+import { host } from '../../../client/src/Context/Host.jsx'
 
 import React from 'react'
 import { useEffect } from 'react'
@@ -25,7 +26,7 @@ export default function Updatecustomer() {
   }
 
   const fetchuser = () => {
-    axios.get(`http://localhost:7002/User/getuser/${uid}`)
+    axios.get(`${host}/User/getuser/${uid}`)
       .then((res) => {
         console.log('fetched users',res)
 
@@ -51,7 +52,7 @@ export default function Updatecustomer() {
 
     try {
       const res = await axios.put(
-        `http://localhost:7002/User/updateprofile/${uid}`,
+        `${host}/User/updateprofile/${uid}`,
         {
           uname: updateuser.uname,
           uemail: updateuser.uemail
@@ -61,7 +62,7 @@ export default function Updatecustomer() {
       console.log('Customer details updated:', res.data)
 
       const statusres = await axios.put(
-        `http://localhost:7002/User/updatestatus/${uid}`,
+        `${host}/User/updatestatus/${uid}`,
         {
           status: updateuser.status
         }

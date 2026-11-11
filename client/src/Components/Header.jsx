@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link, useLocation } from 'react-router-dom'
@@ -46,7 +47,7 @@ export default function Header() {
       }
 
       const res = await axios.get(
-        'http://localhost:7002/cart/viewcart',
+        `${host}/cart/viewcart`,
         {
           headers: {
             Authorization: `Bearer ${token}`

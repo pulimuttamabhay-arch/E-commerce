@@ -16,7 +16,7 @@ export default function Payment() {
 
   const fetchcount = async ()=>{
     try{
-       const res = await axios.get('http://localhost:7002/payment/Count')
+       const res = await axios.get(`${host}/payment/Count`)
        console.log('Count response',res.data)
         setCount({
       payment:res.data.allPayment   
@@ -30,7 +30,7 @@ export default function Payment() {
       const token = localStorage.getItem('Usertoken')
 
       const res = await axios.get(
-        'http://localhost:7002/payment/viewpayment',
+        `${host}/payment/viewpayment`,
         {
           headers: {
             Authorization: `Bearer ${token}`

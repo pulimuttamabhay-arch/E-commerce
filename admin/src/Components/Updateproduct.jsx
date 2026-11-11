@@ -1,3 +1,4 @@
+import { host } from '../../../client/src/Context/Host.jsx'
 
 import React from 'react'
 import { useState ,useEffect} from 'react'
@@ -36,7 +37,7 @@ const handleimage=(e)=>{
 }
 
 const fetchcategory = ()=>{
-axios.get(`http://localhost:7002/category/viewcategory`)
+axios.get(`${host}/category/viewcategory`)
     .then((res)=>{
       console.log('fetched response:',res)
       setCategory(res.data.allcategory)
@@ -50,7 +51,7 @@ const {pid} = useParams()
 console.log('product id :',pid)
 
 useEffect(()=>{
-axios.get(`http://localhost:7002/product/getproduct/${pid}`)
+axios.get(`${host}/product/getproduct/${pid}`)
 .then((res)=>{
   console.log(res.data.singleproduct)
   const data = res.data.singleproduct
@@ -94,7 +95,7 @@ const handleupdate = (e)=>{
 
   console.log('update details:',updateproduct)
 
-axios.put(`http://localhost:7002/product/updateproduct/${pid}`,formdata)
+axios.put(`${host}/product/updateproduct/${pid}`,formdata)
 .then((res)=>{
   console.log(res)
   alert(res.data.message || 'Product updated successfully')
@@ -307,7 +308,7 @@ axios.put(`http://localhost:7002/product/updateproduct/${pid}`,formdata)
                       />
                     ) : updateproduct.image ? (
                       <img
-                        src={`http://localhost:7002/image/${updateproduct.image}`}
+                        src={`${host}/image/${updateproduct.image}`}
                         alt="Current Product"
                         style={{
                           width:'120px',

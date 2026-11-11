@@ -30,7 +30,7 @@ export default function Inventory() {
     const productPagination = useTablePagination(filterproduct)
 
     const fetchproduct = () => {
-        axios.get('http://localhost:7002/product/viewproduct')
+        axios.get(`${host}/product/viewproduct`)
             .then((res) => {
                 console.log(res)
                 setProduct(res.data.allproduct || [])
@@ -41,7 +41,7 @@ export default function Inventory() {
     }
 
     const fetchedcategory = async (req,res)=>{
-        axios.get('http://localhost:7002/category/viewcategory')
+        axios.get(`${host}/category/viewcategory`)
         .then((res)=>{
             console.log(res)
             setViewcategory(res.data.allcategory || [])
@@ -57,7 +57,7 @@ export default function Inventory() {
     }, [])
 
     const handleDelete = (id) => {
-        axios.delete(`http://localhost:7002/product/deleteproduct/${id}`)
+        axios.delete(`${host}/product/deleteproduct/${id}`)
             .then((res) => {
                 console.log(res)
                 console.log("Product Deleted by id", id)
@@ -207,7 +207,7 @@ export default function Inventory() {
                                                     <img
                                                         src={
                                                             pdata.image
-                                                                ? `http://localhost:7002/image/${pdata.image}`
+                                                                ? `${host}/image/${pdata.image}`
                                                                 : '/assets/img/product-1.png'
                                                         }
                                                         alt={pdata.name}

@@ -10,7 +10,7 @@ const [search,setSearch] = useState('')
 const [status,setStatus] = useState('All statuses')
 const [actionLoading,setActionLoading] = useState(null)
 const fetchorders = () => {
-axios.get('http://localhost:7002/order/vieworder'
+axios.get(`${host}/order/vieworder`
 //   ,{
 // headers: {
 // Authorization: `Bearer ${token}`
@@ -32,7 +32,7 @@ fetchorders()
 },[])
 
 const updateorder = (oid,orderStatus) => {
-axios.put(`http://localhost:7002/order/updateorderstatus/${oid}`
+axios.put(`${host}/order/updateorderstatus/${oid}`
   ,{
 orderStatus: orderStatus
 }
@@ -70,7 +70,7 @@ const reviewreturn = async (order, decision) => {
   try {
     setActionLoading(order._id)
     const res = await axios.put(
-      `http://localhost:7002/order/reviewreturn/${order._id}`,
+      `${host}/order/reviewreturn/${order._id}`,
       { decision },
       { headers: { Authorization: 'Bearer ' + token } }
     )
@@ -96,7 +96,7 @@ const completemanualrefund = async (order) => {
   try {
     setActionLoading(order._id)
     const res = await axios.put(
-      `http://localhost:7002/order/completemanualrefund/${order._id}`,
+      `${host}/order/completemanualrefund/${order._id}`,
       {},
       { headers: { Authorization: 'Bearer ' + token } }
     )

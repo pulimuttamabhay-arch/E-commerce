@@ -1,3 +1,4 @@
+import { host } from '../../../client/src/Context/Host.jsx'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Avatar from '@mui/material/Avatar'
@@ -16,7 +17,7 @@ export default function Topbar() {
     () => localStorage.getItem('admin-theme') || 'light'
   )
 
-  const host = 'http://localhost:7002'
+  
 
   const token = localStorage.getItem('adminstoken')
 

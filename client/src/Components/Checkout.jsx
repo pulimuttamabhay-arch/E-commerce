@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -54,7 +55,7 @@ export default function Checkout() {
         }
 
         const res = await axios.get(
-          'http://localhost:7002/cart/viewcart',
+          `${host}/cart/viewcart`,
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -192,7 +193,7 @@ export default function Checkout() {
       if (payment === 'Cash on delivery') {
 
         const res = await axios.post(
-          'http://localhost:7002/payment/demo-checkout',
+          `${host}/payment/demo-checkout`,
           {
             shippingAddress,
             paymentMethod: 'COD'
@@ -241,7 +242,7 @@ export default function Checkout() {
       // CREATE RAZORPAY ORDER
 
       const orderResponse = await axios.post(
-        'http://localhost:7002/payment/create-razorpay-order',
+        `${host}/payment/create-razorpay-order`,
         {
           shippingAddress,
           paymentMethod: payment,
@@ -300,7 +301,7 @@ export default function Checkout() {
             // VERIFY PAYMENT
 
             const verifyResponse = await axios.post(
-              'http://localhost:7002/payment/verify-razorpay-payment',
+              `${host}/payment/verify-razorpay-payment`,
               {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,

@@ -1,3 +1,4 @@
+import { host } from '../../../client/src/Context/Host.jsx'
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -37,7 +38,7 @@ export default function Signin() {
       return
     }
 
-    axios.post('http://localhost:7002/admin/login', signin)
+    axios.post(`${host}/admin/login`, signin)
       .then((res) => {
 
         console.log('Login response:', res.data)

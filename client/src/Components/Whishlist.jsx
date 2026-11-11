@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -12,7 +13,7 @@ export default function Wishlist() {
   const [loading, setLoading] = useState(true)
 
   const fetchproduct = () => {
-    axios.get('http://localhost:7002/product/viewproduct')
+    axios.get(`${host}/product/viewproduct`)
       .then((res) => {
         setProduct(res.data.allproduct || [])
       })
@@ -53,7 +54,7 @@ export default function Wishlist() {
       return image
     }
 
-    return `http://localhost:7002/image/${image}`
+    return `${host}/image/${image}`
   }
 
   const removeWishlist = (productId) => {
@@ -86,7 +87,7 @@ export default function Wishlist() {
       }
 
       const res = await axios.post(
-        'http://localhost:7002/cart/addtocart',
+        `${host}/cart/addtocart`,
         {
           productId: productId,
           quantity: 1

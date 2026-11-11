@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -38,7 +39,7 @@ export default function Home() {
     ]
 
     const fetchcategory = () => {
-        axios.get('http://localhost:7002/category/viewcategory')
+        axios.get(`${host}/category/viewcategory`)
             .then((res) => {
                 console.log(res)
                 setCategory(res.data.allcategory)
@@ -49,7 +50,7 @@ export default function Home() {
     }
 
     const fetchedproduct = () => {
-        axios.get('http://localhost:7002/product/viewproduct')
+        axios.get(`${host}/product/viewproduct`)
             .then((res) => {
                 console.log(res)
                 setProduct(res.data.allproduct)
@@ -105,7 +106,7 @@ export default function Home() {
             }
 
             const res = await axios.post(
-                'http://localhost:7002/cart/addtocart',
+                `${host}/cart/addtocart`,
                 {
                     productId: productId,
                     quantity: 1
@@ -463,7 +464,7 @@ export default function Home() {
                                         <img
                                             src={
                                                 cdata.image
-                                                    ? `http://localhost:7002/image/${cdata.image}`
+                                                    ? `${host}/image/${cdata.image}`
                                                     : '/assets/img/product-1.png'
                                             }
                                             className="card-img-top"
@@ -550,7 +551,7 @@ export default function Home() {
                                             className="product-img"
                                             src={
                                                 pdata.image
-                                                    ? `http://localhost:7002/image/${pdata.image}`
+                                                    ? `${host}/image/${pdata.image}`
                                                     : '/assets/img/product-1.png'
                                             }
                                             alt={pdata.name}

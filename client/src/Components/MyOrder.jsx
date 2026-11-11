@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
@@ -24,7 +25,7 @@ export default function MyOrders() {
       }
 
       const res = await axios.get(
-        'http://localhost:7002/order/myorders',
+        `${host}/order/myorders`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -71,7 +72,7 @@ export default function MyOrders() {
       setReviewLoading(true)
 
       const res = await axios.post(
-        'http://localhost:7002/review/addreview',
+        `${host}/review/addreview`,
         {
           productId: reviewTarget.productId,
           orderId: reviewTarget.orderId,
@@ -113,7 +114,7 @@ export default function MyOrders() {
       setOrderActionLoading(orderId)
       const token = localStorage.getItem('Usertoken')
       const res = await axios.put(
-        `http://localhost:7002/order/cancelorder/${orderId}`,
+        `${host}/order/cancelorder/${orderId}`,
         {},
         { headers: { Authorization: 'Bearer ' + token } }
       )
@@ -135,7 +136,7 @@ export default function MyOrders() {
       setReturnLoading(true)
       const token = localStorage.getItem('Usertoken')
       const res = await axios.post(
-        `http://localhost:7002/order/returnrequest/${returnTarget}`,
+        `${host}/order/returnrequest/${returnTarget}`,
         { reason: returnReason },
         { headers: { Authorization: 'Bearer ' + token } }
       )
@@ -184,7 +185,7 @@ export default function MyOrders() {
       return image
     }
 
-    return `http://localhost:7002/image/${image}`
+    return `${host}/image/${image}`
   }
 
   const getProductId = (item) => {

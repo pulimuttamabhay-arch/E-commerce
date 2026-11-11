@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 
 import React from 'react'
 import { useState, useEffect } from 'react'
@@ -16,7 +17,7 @@ export default function Shop() {
 
   const fetchcategory = async () => {
     try {
-      const res = await axios.get('http://localhost:7002/category/viewcategory')
+      const res = await axios.get(`${host}/category/viewcategory`)
       setCategory(res.data.allcategory || [])
     } catch (error) {
       console.log(error)
@@ -25,7 +26,7 @@ export default function Shop() {
 
   const fetchedproduct = async () => {
     try {
-      const res = await axios.get('http://localhost:7002/product/viewproduct')
+      const res = await axios.get(`${host}/product/viewproduct`)
       setProduct(res.data.allproduct || [])
     } catch (error) {
       console.log(error)
@@ -51,7 +52,7 @@ export default function Shop() {
       }
 
       const res = await axios.post(
-        'http://localhost:7002/cart/addtocart',
+        `${host}/cart/addtocart`,
         {
           productId: productId,
           quantity: 1
@@ -375,7 +376,7 @@ export default function Shop() {
                             className="product-img"
                             src={
                               pdata.image
-                                ? `http://localhost:7002/image/${pdata.image}`
+                                ? `${host}/image/${pdata.image}`
                                 : '/assets/img/product-1.png'
                             }
                             alt={pdata.name}

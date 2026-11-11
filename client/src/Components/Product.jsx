@@ -1,3 +1,4 @@
+import { host } from '../Context/Host.jsx'
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -19,7 +20,7 @@ export default function Product() {
         setIsImagePreviewOpen(false)
         console.log(pid)
 
-        axios.get(`http://localhost:7002/product/getproduct/${pid}`)
+        axios.get(`${host}/product/getproduct/${pid}`)
             .then((res) => {
                 console.log(res)
 
@@ -66,7 +67,7 @@ export default function Product() {
     const fetchreviews = () => {
         setReviewLoading(true)
 
-        axios.get(`http://localhost:7002/review/viewreview/${pid}`)
+        axios.get(`${host}/review/viewreview/${pid}`)
             .then((res) => {
                 console.log('Review response:', res.data)
 
@@ -157,7 +158,7 @@ export default function Product() {
             }
 
             const res = await axios.post(
-                'http://localhost:7002/cart/addtocart',
+                `${host}/cart/addtocart`,
                 {
                     productId: product._id,
                     quantity: quantity
@@ -261,7 +262,7 @@ export default function Product() {
                                     <img
                                         src={
                                             displayedImage
-                                                ? `http://localhost:7002/image/${displayedImage}`
+                                                ? `${host}/image/${displayedImage}`
                                                 : '/assets/img/product-1.png'
                                         }
                                         className="detail-img"
@@ -289,7 +290,7 @@ export default function Product() {
                                                 aria-pressed={displayedImage === image}
                                             >
                                                 <img
-                                                    src={`http://localhost:7002/image/${image}`}
+                                                    src={`${host}/image/${image}`}
                                                     alt=""
                                                 />
                                             </button>
@@ -554,7 +555,7 @@ export default function Product() {
                         <img
                             src={
                                 displayedImage
-                                    ? `http://localhost:7002/image/${displayedImage}`
+                                    ? `${host}/image/${displayedImage}`
                                     : '/assets/img/product-1.png'
                             }
                             alt={`${product.name} enlarged preview`}
