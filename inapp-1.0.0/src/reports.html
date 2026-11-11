@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Reports - NovaCart Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="./assets/images/favicon_io/site.webmanifest">
+</head>
+
+<body>
+  <div id="overlay" class="overlay"></div>
+  <!-- TOPBAR -->
+  <nav id="topbar" class="navbar bg-white border-bottom fixed-top topbar px-3">
+    <button id="toggleBtn" class="d-none d-lg-inline-flex btn btn-light btn-icon btn-sm ">
+      <i class="ti ti-layout-sidebar-left-expand"></i>
+    </button>
+
+    <!-- MOBILE -->
+    <button id="mobileBtn" class="btn btn-light btn-icon btn-sm d-lg-none me-2">
+      <i class="ti ti-layout-sidebar-left-expand"></i>
+    </button>
+    <div>
+      <!-- Navbar nav -->
+       <ul class="list-unstyled d-flex align-items-center mb-0 gap-1">
+        <!-- Pages link -->
+
+        <!-- Bell icon -->
+        <li>
+          <a class="position-relative btn-icon btn-sm btn-light btn rounded-circle" data-bs-toggle="dropdown"
+            aria-expanded="false" href="#" role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-bell">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+              <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+            </svg>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2 ms-n2">
+              2
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-md p-0">
+            <ul class="list-unstyled p-0 m-0">
+              <li class="p-3 border-bottom ">
+                <div class="d-flex gap-3">
+                  <img src="./assets/images/avatar/avatar-1.jpg" alt="" class="avatar avatar-sm rounded-circle" />
+                  <div class="flex-grow-1 small">
+                    <p class="mb-0">New order received</p>
+                    <p class="mb-1">Order #NC-10245 has been placed</p>
+                    <div class="text-secondary">5 minutes ago</div>
+                  </div>
+                </div>
+              </li>
+              <li class="p-3 border-bottom ">
+                <div class="d-flex gap-3">
+                  <img src="./assets/images/avatar/avatar-4.jpg" alt="" class="avatar avatar-sm rounded-circle" />
+                  <div class="flex-grow-1 small">
+                    <p class="mb-0">New customer registered</p>
+                    <p class="mb-1">Customer john@example.com has signed up</p>
+                    <div class="text-secondary">30 minutes ago</div>
+                  </div>
+              </li>
+
+              <li class="p-3 border-bottom">
+                <div class="d-flex gap-3">
+                  <img src="./assets/images/avatar/avatar-2.jpg" alt="" class="avatar avatar-sm rounded-circle" />
+                  <div class="flex-grow-1 small">
+                    <p class="mb-0">Payment confirmed</p>
+                    <p class="mb-1">Payment of ₹2,999 has been received</p>
+                    <div class="text-secondary">1 hour ago</div>
+                  </div>
+                </div>
+              </li>
+              <li class="px-4 py-3 text-center">
+                <a href="#" class="text-primary ">View all notifications</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- Dropdown -->
+        <li class="ms-3 dropdown">
+          <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="./assets/images/avatar/avatar-1.jpg" alt="" class="avatar avatar-sm rounded-circle" />
+          </a>
+          <div class="dropdown-menu dropdown-menu-end p-0" style="min-width: 200px;">
+            <div>
+              <div class="d-flex gap-3 align-items-center border-dashed border-bottom px-3 py-3">
+                <img src="./assets/images/avatar/avatar-1.jpg" alt="" class="avatar avatar-md rounded-circle" />
+                <div>
+                  <h4 class="mb-0 small">NovaCart Admin</h4>
+                  <p class="mb-0  small">@novacart</p>
+                </div>
+              </div>
+              <div class="p-3 d-flex flex-column gap-1 small lh-lg">
+                <a href="#!" class="">
+
+                  <span>Home</span>
+                </a>
+                <a href="#!" class="">
+
+                  <span> Inbox</span>
+                </a>
+                <a href="#!" class="">
+
+                  <span> Chat</span>
+                </a>
+                <a href="#!" class="">
+
+                  <span> Activity</span>
+                </a>
+                <a href="#!" class="">
+
+                  <span> Account Settings</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </nav>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar">
+  <div class="logo-area">
+    <a href="index.html" class="d-inline-flex align-items-center text-decoration-none">
+      <img src="./assets/images/logo-icon.svg" alt="NovaCart" width="26">
+      <span class="logo-text ms-2 fw-bold fs-5">NovaCart <small class="admin-mark">ADMIN</small></span>
+    </a>
+  </div>
+  <ul class="nav flex-column">
+    <li class="px-4 py-2"><small class="nav-text text-uppercase fw-semibold">Admin Panel</small></li>
+    <li><a class="nav-link active" data-page="dashboard" href="index.html"><i class="ti ti-home"></i><span class="nav-text">Dashboard</span></a></li>
+    <li><a class="nav-link" data-page="customers" href="customers.html"><i class="ti ti-users"></i><span class="nav-text">Manage Customers</span></a></li>
+    <li><a class="nav-link" data-page="categories" href="category.html"><i class="ti ti-category"></i><span class="nav-text">Manage Category</span></a></li>
+    <li><a class="nav-link" data-page="products" href="inventory.html"><i class="ti ti-box-seam"></i><span class="nav-text">Manage Products</span></a></li>
+    <li><a class="nav-link" data-page="orders" href="orders.html"><i class="ti ti-shopping-cart"></i><span class="nav-text">Manage Orders</span></a></li>
+    <li><a class="nav-link" data-page="payments" href="payments.html"><i class="ti ti-credit-card"></i><span class="nav-text">Manage Payment</span></a></li>
+    <li><a class="nav-link" data-page="reviews" href="reviews.html"><i class="ti ti-star"></i><span class="nav-text">View Reviews</span></a></li>
+    <li class="px-4 pt-4 pb-2"><small class="nav-text text-uppercase fw-semibold">Account</small></li>
+    <li><a class="nav-link" href="signin.html"><i class="ti ti-logout"></i><span class="nav-text">Logout</span></a></li>
+  </ul>
+</aside>
+
+  <!-- MAIN CONTENT -->
+  <main id="content" class="content"><div class="container-fluid"><div class="mb-4"><h1 class="fs-3 mb-1">Reports & Analytics</h1><p class="mb-0">Track sales, orders and customer performance.</p></div><div class="row g-3 mb-4"><div class="col-md-3"><div class="card h-100"><div class="card-body p-4"><h6 class="mb-3">Gross Sales</h6><h3 class="fw-bold mb-1">₹4,52,380</h3><p class="mb-0 text-success small">+12.8% vs last month</p></div></div></div><div class="col-md-3"><div class="card h-100"><div class="card-body p-4"><h6 class="mb-3">Orders</h6><h3 class="fw-bold mb-1">1,284</h3><p class="mb-0 text-success small">+8.4% vs last month</p></div></div></div><div class="col-md-3"><div class="card h-100"><div class="card-body p-4"><h6 class="mb-3">Average Order</h6><h3 class="fw-bold mb-1">₹3,524</h3><p class="mb-0 text-success small">+4.1% vs last month</p></div></div></div><div class="col-md-3"><div class="card h-100"><div class="card-body p-4"><h6 class="mb-3">Refunds</h6><h3 class="fw-bold mb-1">₹18,420</h3><p class="mb-0 text-danger small">3.2% of sales</p></div></div></div></div><div class="card mb-4"><div class="card-header bg-transparent d-flex justify-content-between align-items-center"><div><h2 class="fs-5 mb-1">Sales Overview</h2><p class="mb-0 small text-secondary">Current year compared with last year</p></div><button id="btn-random" class="btn btn-light btn-sm">Refresh Demo Data</button></div><div class="card-body"><div id="salesChart"></div></div></div><div class="card"><div class="card-header bg-transparent"><h2 class="fs-5 mb-0">Top Selling Products</h2></div><div class="table-responsive"><table class="table align-middle mb-0"><thead class="table-light"><tr><th>Product</th><th>Category</th><th>Units Sold</th><th>Revenue</th></tr></thead><tbody><tr><td><img src="./assets/images/product-1.png" width="42" height="42" class="rounded me-2" alt="Nova X Pro Headphones">Nova X Pro Headphones</td><td>Audio</td><td>128</td><td>₹3,83,872</td></tr><tr><td><img src="./assets/images/product-2.png" width="42" height="42" class="rounded me-2" alt="Pulse Smart Watch">Pulse Smart Watch</td><td>Wearables</td><td>96</td><td>₹4,31,904</td></tr><tr><td><img src="./assets/images/product-3.png" width="42" height="42" class="rounded me-2" alt="AirBeat Wireless Buds">AirBeat Wireless Buds</td><td>Audio</td><td>84</td><td>₹1,67,916</td></tr></tbody></table></div></div></div></main>
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Bootstrap JS -->
+  <script src="./assets/js/main.js" type="module"></script>
+
+
+
+</body>
+
+</html>

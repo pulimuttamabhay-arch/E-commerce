@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Login - NovaCart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="./assets/images/favicon_io/site.webmanifest">
+</head>
+
+<body class="admin-login-page">
+<div class="container d-flex align-items-center justify-content-center min-vh-100 py-4">
+  <div class="login-shell w-100" style="max-width: 960px;">
+    <div class="row g-0 overflow-hidden login-card">
+      <div class="col-lg-6 d-none d-lg-flex login-brand-panel p-5 flex-column justify-content-between">
+        <div><img src="./assets/images/logo-icon.svg" alt="NovaCart" width="42"><div class="brand-word mt-3">NovaCart <span>ADMIN</span></div><p class="text-white-50 mt-3 mb-0">A focused administration dashboard for store operations.</p></div>
+        <div class="login-feature-list"><div><i class="ti ti-shield-check"></i><span>Secure administrator access</span></div><div><i class="ti ti-chart-dots"></i><span>Monitor your store performance</span></div><div><i class="ti ti-settings"></i><span>Control products, orders and payments</span></div></div>
+      </div>
+      <div class="col-lg-6 bg-white p-4 p-md-5">
+        <div class="d-flex align-items-center gap-2 mb-4 d-lg-none"><img src="./assets/images/logo-icon.svg" alt="NovaCart" width="36"><span class="fw-bold fs-4">NovaCart</span></div>
+        <span class="page-kicker">ADMIN ACCESS</span>
+        <h1 class="h3 fw-bold mb-2 mt-2">Welcome back</h1>
+        <p class="text-secondary mb-4">Sign in to manage your NovaCart store.</p>
+        <form class="needs-validation" novalidate>
+          <div class="mb-3"><label for="email" class="form-label">Admin Email</label><input id="email" type="email" class="form-control form-control-lg" placeholder="admin@novacart.com" required autofocus><div class="invalid-feedback">Please enter a valid admin email.</div></div>
+          <div class="mb-3"><label for="password" class="form-label">Password</label><input id="password" type="password" class="form-control form-control-lg" placeholder="Enter your password" required minlength="6"><div class="invalid-feedback">Please provide a password (min 6 characters).</div></div>
+          <div class="d-flex justify-content-between align-items-center mb-4"><div class="form-check"><input id="remember" class="form-check-input" type="checkbox"><label class="form-check-label small" for="remember">Remember me</label></div><a href="#" class="small link-primary">Forgot Password?</a></div>
+          <button class="btn btn-primary btn-lg w-100" type="submit"><i class="ti ti-login me-1"></i>Login to Admin</button>
+        </form>
+        <div class="login-note mt-4"><i class="ti ti-info-circle me-2"></i>Only authorized NovaCart administrators should use this page.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="./assets/js/main.js" type="module"></script>
+</body>
+
+</html>

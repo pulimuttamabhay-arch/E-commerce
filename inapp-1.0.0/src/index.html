@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Dashboard - NovaCart Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="./assets/images/favicon_io/site.webmanifest">
+
+</head>
+
+<body>
+  <div id="overlay" class="overlay"></div>
+  <!-- TOPBAR -->
+  <nav id="topbar" class="navbar bg-white border-bottom fixed-top topbar px-3">
+    <button id="toggleBtn" class="d-none d-lg-inline-flex btn btn-light btn-icon btn-sm ">
+      <i class="ti ti-layout-sidebar-left-expand"></i>
+    </button>
+
+    <!-- MOBILE -->
+    <button id="mobileBtn" class="btn btn-light btn-icon btn-sm d-lg-none me-2">
+      <i class="ti ti-layout-sidebar-left-expand"></i>
+    </button>
+    <div>
+      <!-- Navbar nav -->
+      <ul class="list-unstyled d-flex align-items-center mb-0 gap-1">
+        <!-- Pages link -->
+
+        <!-- Bell icon -->
+        <li>
+          <a class="position-relative btn-icon btn-sm btn-light btn rounded-circle" data-bs-toggle="dropdown"
+            aria-expanded="false" href="#" role="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-bell">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+              <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
+            </svg>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mt-2 ms-n2">
+              2
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-md p-0">
+            <ul class="list-unstyled p-0 m-0">
+              <li class="p-3 border-bottom ">
+                <div class="d-flex gap-3">
+                  <img src="./assets/images/avatar/avatar-1.jpg" alt="" class="avatar avatar-sm rounded-circle" />
+                  <div class="flex-grow-1 small">
+                    <p class="mb-0">New order received</p>
+                    <p class="mb-1">Order #NC-10245 has been placed</p>
+                    <div class="text-secondary">5 minutes ago</div>
+                  </div>
+                </div>
+              </li>
+              <li class="p-3 border-bottom ">
+                <div class="d-flex gap-3">
+                  <img src="./assets/images/avatar/avatar-4.jpg" alt="" class="avatar avatar-sm rounded-circle" />
+                  <div class="flex-grow-1 small">
+                    <p class="mb-0">New customer registered</p>
+                    <p class="mb-1">Customer john@example.com has signed up</p>
+                    <div class="text-secondary">30 minutes ago</div>
+                  </div>
+              </li>
+
+              <li class="p-3 border-bottom">
+                <div class="d-flex gap-3">
+                  <img src="./assets/images/avatar/avatar-2.jpg" alt="" class="avatar avatar-sm rounded-circle" />
+                  <div class="flex-grow-1 small">
+                    <p class="mb-0">Payment confirmed</p>
+                    <p class="mb-1">Payment of ₹2,999 has been received</p>
+                    <div class="text-secondary">1 hour ago</div>
+                  </div>
+                </div>
+              </li>
+              <li class="px-4 py-3 text-center">
+                <a href="#" class="text-primary ">View all notifications</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <!-- Dropdown -->
+        <li class="ms-3 dropdown">
+          <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="./assets/images/avatar/avatar-1.jpg" alt="" class="avatar avatar-sm rounded-circle" />
+          </a>
+          <div class="dropdown-menu dropdown-menu-end p-0" style="min-width: 200px;">
+            <div>
+              <div class="d-flex gap-3 align-items-center border-dashed border-bottom px-3 py-3">
+                <img src="./assets/images/avatar/avatar-1.jpg" alt="" class="avatar avatar-md rounded-circle" />
+                <div>
+                  <h4 class="mb-0 small">NovaCart Administrator</h4>
+                  <p class="mb-0  small">Administrator</p>
+                </div>
+              </div>
+              <div class="p-3 d-flex flex-column gap-1 small lh-lg">
+                <a href="#!" class="">
+
+                  <span>Home</span>
+                </a>
+                <a href="#!" class="">
+
+                  <span> Inbox</span>
+                </a>
+                <a href="#!" class="">
+
+                  <span> Chat</span>
+                </a>
+                <a href="#!" class="">
+
+                  <span> Activity</span>
+                </a>
+                <a href="#!" class="">
+
+                  <span> Account Settings</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </nav>
+
+  <!-- SIDEBAR -->
+  <aside id="sidebar" class="sidebar">
+  <div class="logo-area">
+    <a href="index.html" class="d-inline-flex align-items-center text-decoration-none">
+      <img src="./assets/images/logo-icon.svg" alt="NovaCart" width="26">
+      <span class="logo-text ms-2 fw-bold fs-5">NovaCart <small class="admin-mark">ADMIN</small></span>
+    </a>
+  </div>
+  <ul class="nav flex-column">
+    <li class="px-4 py-2"><small class="nav-text text-uppercase fw-semibold">Admin Panel</small></li>
+    <li><a class="nav-link active" data-page="dashboard" href="index.html"><i class="ti ti-home"></i><span class="nav-text">Dashboard</span></a></li>
+    <li><a class="nav-link" data-page="customers" href="customers.html"><i class="ti ti-users"></i><span class="nav-text">Manage Customers</span></a></li>
+    <li><a class="nav-link" data-page="categories" href="category.html"><i class="ti ti-category"></i><span class="nav-text">Manage Category</span></a></li>
+    <li><a class="nav-link" data-page="products" href="inventory.html"><i class="ti ti-box-seam"></i><span class="nav-text">Manage Products</span></a></li>
+    <li><a class="nav-link" data-page="orders" href="orders.html"><i class="ti ti-shopping-cart"></i><span class="nav-text">Manage Orders</span></a></li>
+    <li><a class="nav-link" data-page="payments" href="payments.html"><i class="ti ti-credit-card"></i><span class="nav-text">Manage Payment</span></a></li>
+    <li><a class="nav-link" data-page="reviews" href="reviews.html"><i class="ti ti-star"></i><span class="nav-text">View Reviews</span></a></li>
+    <li class="px-4 pt-4 pb-2"><small class="nav-text text-uppercase fw-semibold">Account</small></li>
+    <li><a class="nav-link" href="signin.html"><i class="ti ti-logout"></i><span class="nav-text">Logout</span></a></li>
+  </ul>
+</aside>
+
+  <!-- MAIN CONTENT -->
+  <main id="content" class="content">
+<div class="container-fluid">
+  <div class="admin-hero mb-4">
+    <div>
+      <span class="hero-kicker">NOVACART ADMIN</span>
+      <h1 class="fs-3 mb-1">Store Control Center</h1>
+      <p class="mb-0">Monitor customers, products, orders, payments and reviews from one place.</p>
+    </div>
+    <a href="inventory.html" class="btn btn-primary px-4"><i class="ti ti-plus me-1"></i>Add Product</a>
+  </div>
+  <div class="row g-3 mb-4">
+    <div class="col-xl-3 col-md-6 col-12"><div class="card stat-card h-100 p-4"><div class="d-flex gap-3 align-items-center"><div class="icon-shape icon-md bg-primary text-white rounded-3"><i class="ti ti-users fs-4"></i></div><div><p class="text-secondary mb-1 small">Total Customers</p><h3 class="fw-bold mb-1">3,842</h3><span class="metric-up"><i class="ti ti-trending-up"></i> 6.2% this month</span></div></div></div></div>
+    <div class="col-xl-3 col-md-6 col-12"><div class="card stat-card h-100 p-4"><div class="d-flex gap-3 align-items-center"><div class="icon-shape icon-md bg-info text-white rounded-3"><i class="ti ti-box-seam fs-4"></i></div><div><p class="text-secondary mb-1 small">Total Products</p><h3 class="fw-bold mb-1">186</h3><span class="metric-up"><i class="ti ti-circle-check"></i> 172 in stock</span></div></div></div></div>
+    <div class="col-xl-3 col-md-6 col-12"><div class="card stat-card h-100 p-4"><div class="d-flex gap-3 align-items-center"><div class="icon-shape icon-md bg-success text-white rounded-3"><i class="ti ti-shopping-cart fs-4"></i></div><div><p class="text-secondary mb-1 small">Total Orders</p><h3 class="fw-bold mb-1">1,284</h3><span class="metric-up"><i class="ti ti-trending-up"></i> 8.4% this month</span></div></div></div></div>
+    <div class="col-xl-3 col-md-6 col-12"><div class="card stat-card h-100 p-4"><div class="d-flex gap-3 align-items-center"><div class="icon-shape icon-md bg-warning text-white rounded-3"><i class="ti ti-currency-rupee fs-4"></i></div><div><p class="text-secondary mb-1 small">Successful Payments</p><h3 class="fw-bold mb-1">₹4,52,380</h3><span class="metric-up"><i class="ti ti-shield-check"></i> 98.4% success</span></div></div></div></div>
+  </div>
+  <div class="row g-3 mb-4">
+    <div class="col-xl-8 col-12"><div class="card h-100"><div class="card-header bg-transparent d-flex justify-content-between align-items-center"><div><h2 class="mb-1 fs-5">Sales Performance</h2><p class="mb-0 small text-secondary">Revenue and order activity</p></div><a href="payments.html" class="btn btn-outline-primary btn-sm">Payment Overview</a></div><div class="card-body"><div id="salesChart"></div></div></div></div>
+    <div class="col-xl-4 col-12"><div class="card h-100"><div class="card-header bg-transparent"><h2 class="mb-0 fs-5">Admin Tasks</h2></div><div class="card-body"><div class="task-item"><div class="task-icon bg-primary-subtle text-primary"><i class="ti ti-users"></i></div><div class="flex-grow-1"><div class="fw-semibold">Customers</div><small class="text-secondary">Manage 3,842 accounts</small></div><a href="customers.html" class="btn btn-sm btn-light">Open</a></div><div class="task-item"><div class="task-icon bg-info-subtle text-info"><i class="ti ti-category"></i></div><div class="flex-grow-1"><div class="fw-semibold">Categories</div><small class="text-secondary">7 active categories</small></div><a href="category.html" class="btn btn-sm btn-light">Open</a></div><div class="task-item"><div class="task-icon bg-success-subtle text-success"><i class="ti ti-credit-card"></i></div><div class="flex-grow-1"><div class="fw-semibold">Payments</div><small class="text-secondary">12 transactions need review</small></div><a href="payments.html" class="btn btn-sm btn-light">Open</a></div><div class="task-item"><div class="task-icon bg-warning-subtle text-warning"><i class="ti ti-star"></i></div><div class="flex-grow-1"><div class="fw-semibold">Reviews</div><small class="text-secondary">8 new reviews today</small></div><a href="reviews.html" class="btn btn-sm btn-light">Open</a></div></div></div></div>
+  </div>
+  <div class="row g-3">
+    <div class="col-xl-7 col-12"><div class="card"><div class="card-header bg-transparent d-flex justify-content-between align-items-center"><div><h2 class="mb-0 fs-5">Recent Orders</h2><small class="text-secondary">Latest customer purchases</small></div><a href="orders.html" class="btn btn-sm btn-light">View all</a></div><div class="table-responsive"><table class="table mb-0 align-middle admin-table"><thead class="table-light"><tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th></tr></thead><tbody><tr><td class="fw-semibold">#NC-10245</td><td>Rahul Kumar</td><td>₹8,499</td><td><span class="badge bg-success-subtle text-success">Delivered</span></td></tr><tr><td class="fw-semibold">#NC-10244</td><td>Ananya Sharma</td><td>₹3,999</td><td><span class="badge bg-warning-subtle text-warning">Processing</span></td></tr><tr><td class="fw-semibold">#NC-10243</td><td>Arjun Patel</td><td>₹32,999</td><td><span class="badge bg-info-subtle text-info">Shipped</span></td></tr><tr><td class="fw-semibold">#NC-10242</td><td>Priya Nair</td><td>₹1,999</td><td><span class="badge bg-danger-subtle text-danger">Cancelled</span></td></tr></tbody></table></div></div></div>
+    <div class="col-xl-5 col-12"><div class="card"><div class="card-header bg-transparent d-flex justify-content-between align-items-center"><div><h2 class="mb-0 fs-5">Top Products</h2><small class="text-secondary">Best performing inventory</small></div><a href="inventory.html" class="btn btn-sm btn-light">Manage</a></div><div class="card-body p-0"><div class="list-group list-group-flush"><div class="list-group-item d-flex align-items-center gap-3 py-3"><img src="./assets/images/product-1.png" width="46" height="46" class="rounded-3 product-thumb" style="object-fit:cover" alt="Nova X Pro Headphones"><div class="flex-grow-1"><h6 class="mb-1">Nova X Pro Headphones</h6><small class="text-secondary">128 in stock</small></div><strong>₹2,999</strong></div><div class="list-group-item d-flex align-items-center gap-3 py-3"><img src="./assets/images/product-2.png" width="46" height="46" class="rounded-3 product-thumb" style="object-fit:cover" alt="Pulse Smart Watch"><div class="flex-grow-1"><h6 class="mb-1">Pulse Smart Watch</h6><small class="text-secondary">96 in stock</small></div><strong>₹4,499</strong></div><div class="list-group-item d-flex align-items-center gap-3 py-3"><img src="./assets/images/product-3.png" width="46" height="46" class="rounded-3 product-thumb" style="object-fit:cover" alt="AirBeat Wireless Buds"><div class="flex-grow-1"><h6 class="mb-1">AirBeat Wireless Buds</h6><small class="text-secondary">84 in stock</small></div><strong>₹1,999</strong></div></div></div></div></div>
+  </div>
+</div>
+  </main>
+
+  <script src="./assets/js/main.js" type="module"></script>
+
+</body>
+
+</html>

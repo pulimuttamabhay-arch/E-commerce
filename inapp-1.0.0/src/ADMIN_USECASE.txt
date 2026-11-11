@@ -1,0 +1,18 @@
+NovaCart Admin Template - Updated Use Case
+========================================
+LOGIN               -> signin.html
+MANAGE CUSTOMERS    -> customers.html
+MANAGE CATEGORY     -> category.html
+MANAGE PRODUCTS     -> inventory.html + create-product.html
+MANAGE ORDERS       -> orders.html
+MANAGE PAYMENT      -> payments.html
+VIEW REVIEWS        -> reviews.html
+
+Dashboard           -> index.html
+
+Notes:
+- Existing Vite + Bootstrap + SCSS structure preserved.
+- Existing image assets and JS modules preserved.
+- Sidebar and visual styling refreshed across admin pages.
+- Legacy template pages are retained but removed from the live admin navigation.
+- No seller/user-selling functionality is included in the admin navigation.
