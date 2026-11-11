@@ -2,6 +2,7 @@
 import React from 'react'
 import { useState ,useEffect} from 'react'
 import axios from 'axios'
+import { host } from '../../../client/src/Context/Host.jsx'
 
 export default function Product() {
 
@@ -92,6 +93,7 @@ export default function Product() {
     formdata.append('pmrp',product.pmrp)
     formdata.append('pstock',product.pstock)
     formdata.append('pbrand',product.pbrand)
+    formdata.append('featured',document.getElementById('featured').checked)
 
     images.forEach(({file})=>formdata.append('uimage',file))
 
