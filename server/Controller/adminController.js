@@ -43,22 +43,19 @@ export const adminlogin = async (req,res)=>{
   try {
     const {email,password}=req.body
     const admin = await Admin.findOne({email})
-    console.log(admin)
     if (!admin) {
-      res.json({success:true,message:"email not found"})
+      res.status(400).json({success:false,message:"email not found"})
     } else {
       const checkpassword = await bcrypt.compare(password,admin.password)
       if(!checkpassword){
         res.json({success:false,message:"password not founded"})
       }else{
         const token = await jwt.sign({id:admin._id},SECRET_KEY)
-        console.log('token generated',token)
         res.status(200).json({message:"admin logged in successfully",token})
       }
     }
   } catch (error) {
-    console.log(error)
-    res.status(500).json({message:'server error',error})
+    console.error('Admin login failed:', error)
+    res.status(500).json({message:'server error'})
   }
 }
-

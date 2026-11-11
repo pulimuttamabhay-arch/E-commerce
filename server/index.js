@@ -1,4 +1,5 @@
 import express from 'express'
+import mongoose from 'mongoose'
 import dbconnection from './Database/database.js'
 import cors from 'cors'
 import uRoute from './Routes/user_route.js'
@@ -25,6 +26,25 @@ const PORT_NUMBER = process.env.PORT || process.env.PORT_NUMBER || 7002
 
 app.use(cors())
 app.use(express.json())
+
+app.get('/health', (req, res) => {
+    const connected = mongoose.connection.readyState === 1
+
+    res.status(connected ? 200 : 503).json({
+        status: connected ? 'ok' : 'database unavailable'
+    })
+})
+
+app.use((req, res, next) => {
+    if (mongoose.connection.readyState !== 1) {
+        return res.status(503).json({
+            success: false,
+            message: 'Database unavailable'
+        })
+    }
+
+    return next()
+})
 
 app.use('/User', uRoute)
 app.use('/admin', aRoute)

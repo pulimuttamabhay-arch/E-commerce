@@ -31,10 +31,12 @@ export const adduser = async(req,res)=>{
 }
 export const Login = async(req,res)=>{
     try {
-      console.log(req.body)
         const {uemail,upassword}=req.body
-        const user = await user_model.findOne({email:uemail})
-        console.log(user)
+        if (typeof uemail !== 'string' || typeof upassword !== 'string' || !uemail.trim() || !upassword) {
+            return res.status(400).json({message:'Email and password are required'})
+        }
+
+        const user = await user_model.findOne({email:uemail.trim().toLowerCase()})
         if (!user) {
            return res.status(400).json({message:"email not found"})
         } else {
@@ -50,8 +52,8 @@ export const Login = async(req,res)=>{
             
         }
     } catch (error) {
-       console.log(error)
-       res.status(500).json({message:'server error',error}) 
+       console.error('User login failed:', error)
+       res.status(500).json({message:'server error'}) 
     }
 }
 // View own customer profile
