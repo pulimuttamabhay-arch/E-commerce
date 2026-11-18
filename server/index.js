@@ -82,8 +82,15 @@ app.use('/image', (req, res) => {
         return res.status(400).json({ message: 'Invalid image path' })
     }
 
+    const cloudinaryPublicId = publicId.startsWith('Uploads/')
+        ? publicId
+        : `Uploads/${publicId}`
+
     try {
-        return res.redirect(cloudinary.url(publicId, { secure: true }))
+        return res.redirect(cloudinary.url(cloudinaryPublicId, {
+            secure: true,
+            resource_type: 'image'
+        }))
     } catch (error) {
         console.error('Image redirect failed:', error.message)
         return res.status(404).json({ message: 'Image not found' })

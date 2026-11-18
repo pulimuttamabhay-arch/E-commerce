@@ -1,14 +1,24 @@
 export const host = 'https://e-commerce-vknr.onrender.com'
 
 export const imageUrl = (image) => {
-  const source = Array.isArray(image) ? image[0] : image
+  const value = Array.isArray(image) ? image[0] : image
 
-  if (!source || typeof source !== 'string') {
+  if (typeof value !== 'string' || !value.trim()) {
     return ''
   }
 
-  return /^https?:\/\//i.test(source)
-    ? source
-    : `${host}/image/${encodeURIComponent(source)}`
+  const source = value.trim()
+
+  if (/^(https?:|data:|blob:)/i.test(source)) {
+    return source
+  }
+
+  if (source.startsWith('/')) {
+    return source.startsWith('/image/')
+      ? `${host}${source}`
+      : source
+  }
+
+  return `${host}/image/${encodeURIComponent(source)}`
 }
 // export const host=""

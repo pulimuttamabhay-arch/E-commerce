@@ -172,7 +172,9 @@ export const Addorder = async (req, res) => {
         productName: updatedProduct.name,
         price: price,
         quantity: quantity,
-        image: updatedProduct.image?.[0] || ''
+        image: Array.isArray(updatedProduct.image)
+          ? updatedProduct.image[0] || ''
+          : updatedProduct.image || ''
       })
     }
 
