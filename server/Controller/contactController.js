@@ -2,32 +2,32 @@ import Contact from '../Models/Contact.js'
 import transporter from '../config/mailer.js'
 
 export const createContact = async (req, res) => {
-    try {
-        console.log('Contact API called')
+    const { name, email, subject, message } = req.body || {}
 
-        const { name, email, subject, message } = req.body
-
-        if (!name?.trim() || !email?.trim() ||
-            !subject?.trim() || !message?.trim()) {
-            return res.status(400).json({
-                success: false,
-                message: 'All fields are required'
-            })
-        }
-
-        console.log('Saving contact...')
-
-        const contact = await Contact.create({
-            name,
-            email,
-            subject,
-            message
+    if (![name, email, subject, message].every(
+        (value) => typeof value === 'string' && value.trim()
+    )) {
+        return res.status(400).json({
+            success: false,
+            message: 'All fields are required'
         })
+    }
 
-        console.log('Contact saved successfully')
+    let contact
+    try {
+        contact = await Contact.create({ name, email, subject, message })
+    } catch (error) {
+        console.error('Contact save failed:', error.message)
+        return res.status(error.name === 'ValidationError' ? 400 : 500).json({
+            success: false,
+            message: error.name === 'ValidationError'
+                ? 'Please provide a valid email address and message.'
+                : 'Unable to save your message.'
+        })
+    }
 
-        console.log('Sending email...')
-
+    let emailSent = false
+    try {
         await transporter.sendMail({
             from: process.env.SMTP_USER,
             to: process.env.ADMIN_EMAIL,
@@ -42,20 +42,16 @@ Message:
 ${contact.message}
             `
         })
-
-        console.log('Email sent successfully')
-
-        return res.status(201).json({
-            success: true,
-            emailSent: true,
-            message: 'Your message has been sent successfully'
-        })
+        emailSent = true
     } catch (error) {
-        console.log('Contact form error:', error)
-
-        return res.status(500).json({
-            success: false,
-            message: error.message || 'Unable to send your message'
-        })
+        console.error('Contact notification email failed:', error.message)
     }
+
+    return res.status(201).json({
+        success: true,
+        emailSent,
+        message: emailSent
+            ? 'Your message has been sent successfully'
+            : 'Your message was received, but the notification email could not be sent.'
+    })
 }
