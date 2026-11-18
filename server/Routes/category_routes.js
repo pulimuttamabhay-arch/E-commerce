@@ -2,11 +2,11 @@ import express from 'express'
 const route = express.Router()
 import { addcategory, viewcategory,getcategory ,deletecategory,updatecategory} from '../Controller/categoryController.js'
 import { verifyToken } from '../Middleware/authMiddleware.js'
-import upload from '../Middleware/Imageupload.js'
+import upload, { handleImageUploadError } from '../Middleware/Imageupload.js'
 
-route.post('/addcategory',upload.single('uimage'),addcategory)
+route.post('/addcategory',upload.single('uimage'),handleImageUploadError,addcategory)
 route.get('/viewcategory',viewcategory)
 route.delete('/deletecategory/:cid',deletecategory)
-route.put('/updatecategory/:cid',upload.single('uimage'),updatecategory)
+route.put('/updatecategory/:cid',upload.single('uimage'),handleImageUploadError,updatecategory)
 route.get('/getcategory/:cid',getcategory)
 export default route

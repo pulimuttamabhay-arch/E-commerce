@@ -9,6 +9,7 @@ import { host, imageUrl } from '../../../client/src/Context/Host'
 export default function Acategory() {
   const [viewcategory,setViewcategory] = useState([])
   const [viewproduct,setViewproduct] = useState([])
+  const [unavailableImages,setUnavailableImages] = useState({})
   const [editid ,setEditid]=useState(null)
   const [statusfilter,setStatusfilter]=useState('All')
   const [search,setSearch]=useState('')
@@ -123,6 +124,7 @@ const fetchcategory = ()=>{
   .then((res)=>{
     console.log('fetched response:',res)
     setViewcategory(res.data.allcategory)
+    setUnavailableImages({})
 
   })
   .catch((error)=>{
@@ -263,7 +265,7 @@ const handeldelete = (id)=>{
                           </div>
                         </td>
                         <td>
-                          {vdata.image ? (
+                          {vdata.image && !unavailableImages[vdata._id] ? (
                             <img
                               src={imageUrl(vdata.image)}
                               alt={vdata.name}
@@ -274,12 +276,17 @@ const handeldelete = (id)=>{
                                 borderRadius:'8px'
                               }}
                               onError={(e)=>{
-                                e.target.onerror = null
-                                e.target.style.display = 'none'
+                                e.currentTarget.onerror = null
+                                setUnavailableImages((current) => ({
+                                  ...current,
+                                  [vdata._id]: true
+                                }))
                               }}
                             />
                           ) : (
-                            <span className="text-secondary">No image</span>
+                            <span className="text-secondary">
+                              {vdata.image ? 'Image unavailable — re-upload' : 'No image'}
+                            </span>
                           )}
                         </td>
                         <td>
