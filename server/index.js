@@ -83,6 +83,10 @@ app.use('/image', (req, res) => {
         return res.status(400).json({ message: 'Invalid image path' })
     }
 
+    if (/^https:\/\/res\.cloudinary\.com\/[a-z0-9_-]+\/image\/upload\//i.test(publicId)) {
+        return res.redirect(publicId)
+    }
+
     const cloudinaryPublicId = publicId.startsWith('Uploads/')
         ? publicId
         : `Uploads/${publicId}`
