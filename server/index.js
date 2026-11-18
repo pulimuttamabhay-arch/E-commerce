@@ -28,7 +28,8 @@ const allowedOrigins = [
     'https://e-commerce-73ti.vercel.app',
     'https://e-commerce-one-pied-73.vercel.app',
     'http://localhost:5173',
-    'http://localhost:5174'
+    'http://localhost:5174',
+    /^https:\/\/e-commerce-[a-z0-9-]+-project-99bd\.vercel\.app$/
 ]
 const corsOptions = {
     origin: allowedOrigins,
