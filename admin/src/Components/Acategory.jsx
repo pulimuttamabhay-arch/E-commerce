@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import TablePagination from './TablePagination'
 import useTablePagination from './useTablePagination'
-import { host } from '../../../client/src/Context/Host'
+import { host, imageUrl } from '../../../client/src/Context/Host'
 
 export default function Acategory() {
   const [viewcategory,setViewcategory] = useState([])
@@ -42,7 +42,7 @@ export default function Acategory() {
         status:data.status
       })
       setCategoryImage(null)
-      setImagePreview(data.image ? `${host}/image/${data.image}` : '')
+      setImagePreview(imageUrl(data.image))
     })
     .catch((error)=>{
       console.log(error)
@@ -265,7 +265,7 @@ const handeldelete = (id)=>{
                         <td>
                           {vdata.image ? (
                             <img
-                              src={`${host}/image/${vdata.image}`}
+                              src={imageUrl(vdata.image)}
                               alt={vdata.name}
                               style={{
                                 width:'55px',

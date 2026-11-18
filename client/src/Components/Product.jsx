@@ -1,4 +1,4 @@
-import { host } from '../Context/Host.jsx'
+import { host, imageUrl } from '../Context/Host.jsx'
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -262,7 +262,7 @@ export default function Product() {
                                     <img
                                         src={
                                             displayedImage
-                                                ? `${host}/image/${displayedImage}`
+                                                ? imageUrl(displayedImage)
                                                 : '/assets/img/product-1.png'
                                         }
                                         className="detail-img"
@@ -290,7 +290,7 @@ export default function Product() {
                                                 aria-pressed={displayedImage === image}
                                             >
                                                 <img
-                                                    src={`${host}/image/${image}`}
+                                                    src={imageUrl(image)}
                                                     alt=""
                                                 />
                                             </button>
@@ -555,7 +555,7 @@ export default function Product() {
                         <img
                             src={
                                 displayedImage
-                                    ? `${host}/image/${displayedImage}`
+                                    ? imageUrl(displayedImage)
                                     : '/assets/img/product-1.png'
                             }
                             alt={`${product.name} enlarged preview`}

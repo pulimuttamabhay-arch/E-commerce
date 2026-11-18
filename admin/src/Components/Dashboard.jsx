@@ -1,4 +1,4 @@
-import { host } from '../../../client/src/Context/Host.jsx'
+import { host, imageUrl } from '../../../client/src/Context/Host.jsx'
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -273,19 +273,7 @@ export default function Dashboard() {
     'N/A'
 
   const getProductImage = (product) => {
-    const image = Array.isArray(product.image)
-      ? product.image[0]
-      : product.image
-
-    if (!image) {
-      return '/assets/img/product-1.png'
-    }
-
-    if (image.startsWith('http')) {
-      return image
-    }
-
-    return `${host}/image/${image}`
+    return imageUrl(product.image) || '/assets/images/product-1.png'
   }
 
   const topProducts = [...products]
@@ -736,7 +724,7 @@ export default function Dashboard() {
                               alt={product.name || 'Product'}
                               onError={(event) => {
                                 event.currentTarget.onerror = null
-                                event.currentTarget.src = '/assets/img/product-1.png'
+                                event.currentTarget.src = '/assets/images/product-1.png'
                               }}
                             />
 

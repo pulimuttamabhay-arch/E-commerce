@@ -1,4 +1,4 @@
-import { host } from '../Context/Host.jsx'
+import { host, imageUrl } from '../Context/Host.jsx'
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -44,18 +44,8 @@ export default function Wishlist() {
   }, [])
 
     const getProductImage = (image) => {
-    if (!image) return '/assets/img/product-1.png'
-
-    if (Array.isArray(image)) {
-      return getProductImage(image[0])
+      return imageUrl(image) || '/assets/img/product-1.png'
     }
-
-    if (typeof image === 'string' && image.startsWith('http')) {
-      return image
-    }
-
-    return `${host}/image/${image}`
-  }
 
   const removeWishlist = (productId) => {
     const newWishlist = wishlist.filter(

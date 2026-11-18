@@ -89,7 +89,7 @@ console.log('User ID:', req.params.uid)
 
     const updateprofile = await user_model.findByIdAndUpdate(
       uid,
-      { profileimage: req.file.filename },
+      { profileimage: req.file.path },
       { new: true }
     )
 

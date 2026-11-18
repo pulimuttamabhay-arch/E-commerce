@@ -1,4 +1,4 @@
-import { host } from '../../../client/src/Context/Host.jsx'
+import { host, imageUrl } from '../../../client/src/Context/Host.jsx'
 
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
@@ -6,17 +6,7 @@ import TablePagination from './TablePagination'
 import useTablePagination from './useTablePagination'
 
 const getImageUrl = (image) => {
-    const filename = Array.isArray(image) ? image[0] : image
-
-    if (!filename) {
-        return ''
-    }
-
-    if (filename.startsWith('http')) {
-        return filename
-    }
-
-    return `${host}/image/${filename}`
+    return imageUrl(image)
 }
 
 export default function Review() {
@@ -314,7 +304,7 @@ export default function Review() {
                                                                 className="reviews-product-image"
                                                                 onError={(e) => {
                                                                     e.target.onerror = null
-                                                                    e.target.src = '/assets/img/product-1.png'
+                                                                    e.currentTarget.src = '/assets/images/product-1.png'
                                                                 }}
                                                             />
                                                         ) : (

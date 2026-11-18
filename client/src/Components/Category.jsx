@@ -1,4 +1,4 @@
-import { host } from '../Context/Host.jsx'
+import { host, imageUrl } from '../Context/Host.jsx'
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -15,6 +15,7 @@ export default function Category() {
 
     try {
       const response = await axios.get(`${host}/category/viewcategory`)
+      console.log(response)
       setCategory(Array.isArray(response.data.allcategory) ? response.data.allcategory : [])
     } catch (requestError) {
       console.error('Category fetch error:', requestError.response?.data || requestError.message)
@@ -118,7 +119,7 @@ export default function Category() {
                       <img
                         src={
                           cat.image
-                            ? `${host}/image/${cat.image}`
+                            ? imageUrl(cat.image)
                             : '/assets/img/product-1.png'
                         }
                         alt={cat.name || cat.cname}

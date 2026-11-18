@@ -17,14 +17,26 @@ import dotenv from 'dotenv'
 import http from 'http'
 import { Server } from 'socket.io'
 import { setIO } from './socket.js'
+import cloudinary from './config/cloudinary.js'
 
 dotenv.config()
 
 const app = express()
 
 const PORT_NUMBER = process.env.PORT || process.env.PORT_NUMBER || 7002
+const allowedOrigins = [
+    'https://e-commerce-73ti.vercel.app',
+    'https://e-commerce-one-pied-73.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:5174'
+]
+const corsOptions = {
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']
+}
 
-app.use(cors())
+app.use(cors(corsOptions))
+app.options(/.*/, cors(corsOptions))
 app.use(express.json())
 
 app.get('/health', (req, res) => {
@@ -57,14 +69,31 @@ app.use('/order', order_routes)
 app.use('/api/contact', contactRoute)
 app.use('/notification', notificationRoute)
 app.use('/image', express.static('./Upload'))
+app.use('/image', (req, res) => {
+    let publicId
+
+    try {
+        publicId = decodeURIComponent(req.path.slice(1))
+    } catch {
+        return res.status(400).json({ message: 'Invalid image path' })
+    }
+
+    if (!publicId || publicId.includes('..')) {
+        return res.status(400).json({ message: 'Invalid image path' })
+    }
+
+    try {
+        return res.redirect(cloudinary.url(publicId, { secure: true }))
+    } catch (error) {
+        console.error('Image redirect failed:', error.message)
+        return res.status(404).json({ message: 'Image not found' })
+    }
+})
 
 const server = http.createServer(app)
 
 const io = new Server(server, {
-    cors: {
-        origin: ['https://e-commerce-73ti.vercel.app', 'https://e-commerce-one-pied-73.vercel.app'],
-        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
-    }
+    cors: corsOptions
 })
 
 setIO(io)

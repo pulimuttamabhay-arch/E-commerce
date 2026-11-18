@@ -16,7 +16,9 @@ import Updatecat from './Components/Updatecat'
 import Updateproduct from './Components/Updateproduct'
 import Updatecustomer from './Components/ucustomer'
 
-
+if(!localStorage.getItem('adminstoken') && window.location.pathname !== '/signin' && window.location.pathname !== '/Signin'){
+  window.location.href = '/signin'
+}
 
  function Appcontent() {
   const location = useLocation()

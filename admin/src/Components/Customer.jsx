@@ -1,4 +1,5 @@
 
+import { host, imageUrl } from '../../../client/src/Context/Host.jsx'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -226,9 +227,7 @@ export default function Customer() {
                               {udata.profileimage && (
                                 <img
                                   src={
-                                    udata.profileimage.startsWith('http')
-                                      ? udata.profileimage
-                                      : `${host}/image/${encodeURIComponent(udata.profileimage)}`
+                                    imageUrl(udata.profileimage)
                                   }
                                   className="w-100 h-100 rounded-circle"
                                   style={{objectFit:'cover'}}

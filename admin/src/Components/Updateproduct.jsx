@@ -1,4 +1,4 @@
-import { host } from '../../../client/src/Context/Host.jsx'
+import { host, imageUrl } from '../../../client/src/Context/Host.jsx'
 
 import React from 'react'
 import { useState ,useEffect} from 'react'
@@ -101,7 +101,7 @@ axios.put(`${host}/product/updateproduct/${pid}`,formdata)
   alert(res.data.message || 'Product updated successfully')
 })
 .catch((error)=>{
-  console.log(error)
+  console.error('Product update failed:',error.response?.data || error.message)
   alert(error.response?.data?.message || 'Product update failed')
 })
 }
@@ -308,7 +308,7 @@ axios.put(`${host}/product/updateproduct/${pid}`,formdata)
                       />
                     ) : updateproduct.image ? (
                       <img
-                        src={`${host}/image/${updateproduct.image}`}
+                        src={imageUrl(updateproduct.image)}
                         alt="Current Product"
                         style={{
                           width:'120px',

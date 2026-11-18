@@ -55,6 +55,7 @@ export const addcategory = async (req, res) => {
       name: cname.trim(),
       cdesc,
       status,
+      image: req.file?.path || '',
     });
 
     return res.status(201).json({
@@ -116,7 +117,7 @@ export const updatecategory = async (req,res)=>{
     }
 
     if(req.file){
-      updatedata.image = req.file.filename
+      updatedata.image = req.file.path
     }
 
     const updatecategory = await categorymodel.findByIdAndUpdate(

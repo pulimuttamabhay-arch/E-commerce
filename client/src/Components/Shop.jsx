@@ -1,4 +1,4 @@
-import { host } from '../Context/Host.jsx'
+import { host, imageUrl } from '../Context/Host.jsx'
 
 import React from 'react'
 import { useState, useEffect } from 'react'
@@ -376,7 +376,7 @@ export default function Shop() {
                             className="product-img"
                             src={
                               pdata.image
-                                ? `${host}/image/${pdata.image}`
+                                ? imageUrl(pdata.image)
                                 : '/assets/img/product-1.png'
                             }
                             alt={pdata.name}

@@ -1,4 +1,4 @@
-import { host } from '../Context/Host.jsx'
+import { host, imageUrl } from '../Context/Host.jsx'
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -464,7 +464,7 @@ export default function Home() {
                                         <img
                                             src={
                                                 cdata.image
-                                                    ? `${host}/image/${cdata.image}`
+                                                    ? imageUrl(cdata.image)
                                                     : '/assets/img/product-1.png'
                                             }
                                             className="card-img-top"
@@ -551,7 +551,7 @@ export default function Home() {
                                             className="product-img"
                                             src={
                                                 pdata.image
-                                                    ? `${host}/image/${pdata.image}`
+                                                    ? imageUrl(pdata.image)
                                                     : '/assets/img/product-1.png'
                                             }
                                             alt={pdata.name}

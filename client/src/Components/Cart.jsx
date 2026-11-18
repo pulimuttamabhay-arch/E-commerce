@@ -1,4 +1,4 @@
-import { host } from '../Context/Host.jsx'
+import { host, imageUrl } from '../Context/Host.jsx'
 
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -175,11 +175,7 @@ return (
                           <img
                             src={
                               item.product?.image
-                                ? (Array.isArray(item.product.image)
-                                  ? `${host}/image/${item.product.image[0]}`
-                                  : item.product.image.startsWith('http')
-                                    ? item.product.image
-                                    : `${host}/image/${item.product.image}`)
+                                ? imageUrl(item.product.image)
                                 : '/assets/img/product-1.png'
                             }
                             alt={item.product?.name || 'Product'}

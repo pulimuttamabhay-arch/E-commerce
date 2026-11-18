@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { host, imageUrl } from '../../../client/src/Context/Host.jsx'
 import TablePagination from './TablePagination'
 import useTablePagination from './useTablePagination'
 
@@ -207,8 +208,8 @@ export default function Inventory() {
                                                     <img
                                                         src={
                                                             pdata.image
-                                                                ? `${host}/image/${pdata.image}`
-                                                                : '/assets/img/product-1.png'
+                                                                ? imageUrl(pdata.image)
+                                                                : '/assets/images/product-1.png'
                                                         }
                                                         alt={pdata.name}
                                                         className="avatar avatar-md rounded-3 product-thumb"
@@ -219,7 +220,7 @@ export default function Inventory() {
                                                         }}
                                                         onError={(e) => {
                                                             e.target.onerror = null
-                                                            e.target.src = '/assets/img/product-1.png'
+                                                            e.currentTarget.src = '/assets/images/product-1.png'
                                                         }}
                                                     />
 

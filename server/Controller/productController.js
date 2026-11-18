@@ -6,7 +6,7 @@ import Order from "../Models/Order.js";
 export const Addproduct = async(req,res)=>{
  try{
   const {pname,pdesc,pprice,pmrp,catid,pstock,pbrand,featured}= req.body
-  const uploadedImages = (req.files || []).map(file => file.filename)
+  const uploadedImages = (req.files || []).map(file => file.path)
   const sellingPrice = Number(pprice)
   const mrp = pmrp === undefined || pmrp === '' ? sellingPrice : Number(pmrp)
 
@@ -171,7 +171,7 @@ export const updateproduct = async (req,res)=>{
    }
 
    if(req.file){
-     updatedata.image = req.file.filename
+     updatedata.image = req.file.path
    }
 
    const uproduct = await Product.findByIdAndUpdate(
